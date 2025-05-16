@@ -3,10 +3,10 @@ DB_USER = root
 DB_NAME = dns_servers
 TABLE_NAME = dns_servers
 SQL_DUMP_FILE = backup.sql
-INPUT_FILE = ~/data/dns_servers.txt
-OUTPUT_FILE = ~/data/output.txt
-SCAN_SCRIPT = ~/scripts/dns_scan.sh
-EXPORT_DIR = ~/data/db_exports
+INPUT_FILE = ~/bachelor-thesis/data/dns_servers.txt
+OUTPUT_FILE = ~/bachelor-thesis/data/output.txt
+SCAN_SCRIPT = ~/bachelor-thesis/scripts/dns_scan.sh
+EXPORT_DIR = ~/bachelor-thesis/data/db_exports
 
 # --- COMMANDS ---
 
