@@ -1,0 +1,9 @@
+[submodule "scripts/ipv4map"]
+	path = scripts/ipv4map
+	url = https://github.com/ipv4map/ipv4map
+[submodule "scripts/ipv4-heatmap"]
+	path = scripts/ipv4-heatmap
+	url = https://github.com/measurement-factory/ipv4-heatmap
+[submodule "scripts/dnsvalidator"]
+	path = scripts/dnsvalidator
+	url = https://github.com/vortexau/dnsvalidator
