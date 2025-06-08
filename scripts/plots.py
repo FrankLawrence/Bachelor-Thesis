@@ -241,12 +241,12 @@ create_plot(
 
 sql_query_4 = """
 SELECT
-    COUNT(*) AS `COUNT`,
-    a.as_name AS `name`
+    COUNT(*) AS count,
+    a.as_name AS name
 FROM dns_resolvers AS d
 JOIN as_ip_ranges AS a
     ON INET_ATON(d.ip) BETWEEN INET_ATON(a.start_ip) AND INET_ATON(a.end_ip)
-WHERE d.as_name = a.as_name
+WHERE d.asn = a.asn
 GROUP BY a.as_name
 ORDER BY COUNT(*) DESC
 """
@@ -262,12 +262,12 @@ create_plot(
 # DNSSEC
 sql_query_5 = """
 SELECT
-    COUNT(*) AS `COUNT`,
-    a.as_name AS `name`
+    COUNT(*) AS count,
+    a.as_name AS name
 FROM dns_resolvers AS d
 JOIN as_ip_ranges AS a
     ON INET_ATON(d.ip) BETWEEN INET_ATON(a.start_ip) AND INET_ATON(a.end_ip)
-WHERE d.as_name = a.as_name AND d.dnssec_support IS True
+WHERE d.asn = a.asn AND d.dnssec_support IS True
 GROUP BY a.as_name
 ORDER BY COUNT(*) DESC
 """
