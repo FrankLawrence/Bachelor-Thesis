@@ -1,0 +1,53 @@
+🔍 Analyzing DNS resolver distributions...
+Analyzing all DNS resolvers...
+Analyzing DNSSEC-enabled resolvers...
+================================================================================
+DNS RESOLVER DISTRIBUTION: ALL vs DNSSEC-ENABLED
+================================================================================
+
+📊 SUMMARY COMPARISON
+--------------------------------------------------
+Metric                    All Resolvers   DNSSEC Only     Difference
+-----------------------------------------------------------------
+Total Resolvers                   29,720          1,210       4.1%
+Gini /8                           0.5046         0.4490   -0.0555
+Gini /16                          0.5740         0.1413   -0.4327
+Gini AS                           0.7727         0.4372   -0.3356
+Unique /8 blocks                     204            190
+Unique /16 blocks                  8,398          1,021
+Unique AS                          4,685            617
+
+📈 TOP 5 /8 ADDRESS SPACES
+--------------------------------------------------
+Rank  Entity                    All Count    DNSSEC Count    DNSSEC %  
+-------------------------------------------------------------------
+1     185.x.x.x                       1,270             41       3.2%
+2     103.x.x.x                       1,223             84       6.9%
+3     192.x.x.x                         911              0       0.0%
+4     45.x.x.x                          799             27       3.4%
+5     162.x.x.x                         689              0       0.0%
+
+📈 TOP 5 /16 ADDRESS SPACES
+--------------------------------------------------
+Rank  Entity                    All Count    DNSSEC Count    DNSSEC %  
+-------------------------------------------------------------------
+1     192.185.x.x                       454              0       0.0%
+2     50.87.x.x                         259              0       0.0%
+3     162.241.x.x                       196              0       0.0%
+4     143.95.x.x                        162              0       0.0%
+5     162.215.x.x                       128              0       0.0%
+
+📈 TOP 5 AUTONOMOUS SYSTEMS
+--------------------------------------------------
+Rank  Entity                    All Count    DNSSEC Count    DNSSEC %  
+-------------------------------------------------------------------
+1     Unknown (Unknown)               1,884             74       3.9%
+2     16276 (OVH SAS)                 1,733             52       3.0%
+3     24940 (Hetzner Online GmbH)         971              0       0.0%
+4     46606 (Unified Layer)             909              0       0.0%
+5     20940 (Akamai International)         716              0       0.0%
+
+🔒 DNSSEC INSIGHTS
+--------------------------------------------------
+DNSSEC adoption rate: 4.1% (1,210 of 29,720)
+DNSSEC resolvers are LESS concentrated by AS than general population

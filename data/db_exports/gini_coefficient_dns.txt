@@ -1,0 +1,74 @@
+DNS Resolver Gini Coefficient Calculator
+==================================================
+🔍 Starting DNS Resolver Gini Coefficient Analysis...
+✓ Connected to MySQL database: dns_servers
+✓ Loaded 29720 DNS resolver records
+
+Analyzing /8 address space distribution...
+✓ 29720 valid IP addresses for /8 analysis
+
+Analyzing /16 address space distribution...
+✓ 29720 valid IP addresses for /16 analysis
+
+Analyzing AS distribution...
+✓ 29720 resolvers with valid ASN data
+
+================================================================================
+DNS RESOLVER GINI COEFFICIENT ANALYSIS
+================================================================================
+
+📊 /8 ADDRESS SPACE ANALYSIS
+--------------------------------------------------
+Gini Coefficient: 0.5046
+Total Resolvers: 29,720
+Unique Entities: 204
+Min Resolvers per Entity: 1
+Max Resolvers per Entity: 1,270
+Mean Resolvers per Entity: 145.7
+Median Resolvers per Entity: 86.0
+Interpretation: High inequality - significant concentration
+
+Top 5 /8 Address Space Address Spaces:
+  185.0.0.0/8: 1,270 resolvers (4.3%)
+  103.0.0.0/8: 1,223 resolvers (4.1%)
+  192.0.0.0/8: 911 resolvers (3.1%)
+  45.0.0.0/8: 799 resolvers (2.7%)
+  162.0.0.0/8: 689 resolvers (2.3%)
+
+📊 /16 ADDRESS SPACE ANALYSIS
+--------------------------------------------------
+Gini Coefficient: 0.5740
+Total Resolvers: 29,720
+Unique Entities: 8,398
+Min Resolvers per Entity: 1
+Max Resolvers per Entity: 454
+Mean Resolvers per Entity: 3.5
+Median Resolvers per Entity: 1.0
+Interpretation: High inequality - significant concentration
+
+Top 5 /16 Address Space Address Spaces:
+  192.185.0.0/16: 454 resolvers (1.5%)
+  50.87.0.0/16: 259 resolvers (0.9%)
+  162.241.0.0/16: 196 resolvers (0.7%)
+  143.95.0.0/16: 162 resolvers (0.5%)
+  162.215.0.0/16: 128 resolvers (0.4%)
+
+📊 AS ANALYSIS
+--------------------------------------------------
+Gini Coefficient: 0.7727
+Total Resolvers: 29,720
+Unique Entities: 4,685
+Min Resolvers per Entity: 1
+Max Resolvers per Entity: 1,884
+Mean Resolvers per Entity: 6.3
+Median Resolvers per Entity: 1.0
+Interpretation: Very high inequality - extreme concentration
+
+Top 5 Autonomous Systems:
+  1. Unknown (Unknown...): 1,884 resolvers (6.3%)
+  2. 16276 (OVH SAS...): 1,733 resolvers (5.8%)
+  3. 24940 (Hetzner Online GmbH...): 971 resolvers (3.3%)
+  4. 46606 (Unified Layer...): 909 resolvers (3.1%)
+  5. 20940 (Akamai International B.V....): 716 resolvers (2.4%)
+✓ Plots saved as 'dns_resolver_gini_analysis.png'
+✓ Database connection closed

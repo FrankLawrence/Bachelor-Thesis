@@ -1,0 +1,74 @@
+DNSSEC Resolver Gini Coefficient Calculator
+==================================================
+🔍 Starting DNSSEC Resolver Gini Coefficient Analysis...
+✓ Connected to MySQL database: dns_servers
+✓ Loaded 1210 DNSSEC resolver records
+
+Analyzing /8 address space distribution...
+✓ 1210 valid IP addresses for /8 analysis
+
+Analyzing /16 address space distribution...
+✓ 1210 valid IP addresses for /16 analysis
+
+Analyzing AS distribution...
+✓ 1210 resolvers with valid ASN data
+
+================================================================================
+DNSSEC RESOLVER GINI COEFFICIENT ANALYSIS
+================================================================================
+
+📊 /8 ADDRESS SPACE ANALYSIS
+--------------------------------------------------
+Gini Coefficient: 0.4490
+Total Resolvers: 1,210
+Unique Entities: 190
+Min Resolvers per Entity: 1
+Max Resolvers per Entity: 84
+Mean Resolvers per Entity: 6.4
+Median Resolvers per Entity: 4.0
+Interpretation: Moderate inequality - some concentration
+
+Top 5 /8 Address Space Address Spaces:
+  103.0.0.0/8: 84 resolvers (6.9%)
+  185.0.0.0/8: 41 resolvers (3.4%)
+  45.0.0.0/8: 27 resolvers (2.2%)
+  51.0.0.0/8: 24 resolvers (2.0%)
+  203.0.0.0/8: 23 resolvers (1.9%)
+
+📊 /16 ADDRESS SPACE ANALYSIS
+--------------------------------------------------
+Gini Coefficient: 0.1413
+Total Resolvers: 1,210
+Unique Entities: 1,021
+Min Resolvers per Entity: 1
+Max Resolvers per Entity: 8
+Mean Resolvers per Entity: 1.2
+Median Resolvers per Entity: 1.0
+Interpretation: Low inequality - relatively equal distribution
+
+Top 5 /16 Address Space Address Spaces:
+  103.134.0.0/16: 8 resolvers (0.7%)
+  130.37.0.0/16: 7 resolvers (0.6%)
+  168.196.0.0/16: 5 resolvers (0.4%)
+  173.248.0.0/16: 5 resolvers (0.4%)
+  78.31.0.0/16: 5 resolvers (0.4%)
+
+📊 AS ANALYSIS
+--------------------------------------------------
+Gini Coefficient: 0.4372
+Total Resolvers: 1,210
+Unique Entities: 617
+Min Resolvers per Entity: 1
+Max Resolvers per Entity: 74
+Mean Resolvers per Entity: 2.0
+Median Resolvers per Entity: 1.0
+Interpretation: Moderate inequality - some concentration
+
+Top 5 Autonomous Systems:
+  1. Unknown (broadNnet...): 74 resolvers (6.1%)
+  2. 16276 (OVH SAS...): 52 resolvers (4.3%)
+  3. 7922 (Comcast Cable Communications, LLC...): 43 resolvers (3.6%)
+  4. 209 (CenturyLink Communications, LLC...): 26 resolvers (2.1%)
+  5. 51167 (Contabo GmbH...): 15 resolvers (1.2%)
+✓ Plots saved as 'dns_resolver_gini_analysis.png'
+✓ Database connection closed
