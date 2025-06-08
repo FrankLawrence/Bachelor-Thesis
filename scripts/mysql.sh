@@ -62,13 +62,20 @@ LIMIT 10;")
 # WHERE `as` IS NOT NULL
 # GROUP BY `as`
 # ORDER BY COUNT(*) DESC
-# LIMIT 10
-# ") &
+# LIMIT 10") &
 
 num_dns_resolvers=$(mysql_query "
 SELECT
     COUNT(*)
 FROM dns_resolvers;")
+top_10_country_resolvers=$(mysql_query "
+SELECT
+   COUNT(*) AS 'Count (DSN Resolvers)',
+   geo_location AS COUNTRY
+FROM dns_resolvers AS d
+GROUP BY geo_location
+ORDER BY COUNT(*) DESC
+LIMIT 10;")
 
 num_nonvalidated_openintel=$(mysql_query "
 SELECT
@@ -117,7 +124,8 @@ printf "Openintel: $num_nonvalidated_openintel not validated, $num_validated_ope
 
 printf "\e[1;41m%.6b\e[0m\n" "Tranco\n"
 # printf "There are $num_dist_nameservers different nameservers in the tranco 1 million list.\n"
-printf "Nameserver tranco count: $num_dist_nameservers\n"
+printf "Nameserver tranco count: $num_dist_nameservers\n
+Number nameservers owned by domain owner: $num_domain_and_ns_owner\n"
 printf "The top 10 most used nameservers from the tranco 1 million are: \n$top_10_nameservers_tranco.\n\n"
 # The top 10 most used AS from the openintel list are: \n$top_10_asn_openintel\n\n"
 # printf "In total, the dns_resolvers database has $num_dns_resolvers dns resolvers and nameservers combined.\n"
@@ -126,8 +134,12 @@ printf "num dns resolvers and nameservers (zmap): $num_dns_resolvers\n"
 printf "\e[1;41m%.11b\e[0m\n" "Gov Domains\n"
 # printf "There are $num_gov_domains registered .gov domains ($num_gov_domains_rrsig of them have a registered rrsig signature).\n"
 printf "num .gov domains: $num_gov_domains ($num_gov_domains_rrsig with rrsig)\n
-Gov Domains: $num_nonvalidated_gov not validated, $num_validated_gov validated by DNSSEC\n
-Number nameservers owned by domain owner: $num_domain_and_ns_owner\n"
+Gov Domains: $num_nonvalidated_gov not validated, $num_validated_gov validated by DNSSEC\n"
 
-my_asn=$(mysql_query 'SELECT * FROM as_ip_ranges AS air WHERE INET_ATON("77.249.63.232") BETWEEN INET_ATON(air.start_ip) AND INET_ATON(air.end_ip)')
-printf "My ip is $(curl https://ipinfo.io/ip), and my ASN is $(my_asn).\n"
+printf "DNS resolvers that respond to me:\n"
+my_asn=$(mysql_query '
+SELECT as_name
+FROM as_ip_ranges AS air
+WHERE INET_ATON("130.37.198.76")
+    BETWEEN INET_ATON(air.start_ip) AND INET_ATON(air.end_ip)')
+printf "My ip is $(curl -o /dev/null https://ipinfo.io/ip), and my ASN is $my_asn.\n"
