@@ -155,15 +155,12 @@ def create_ip_histogram(db_config, output_path, title):
         print(f"Error connecting to MySQL: {err}")
 
 
-# Example Usage - IP Histogram
 create_ip_histogram(
     db_config=db_config,
     output_path="/home/ubuntu/bachelor-thesis/data/plots/ip_histogram.svg",
     title="Distribution of DNS Resolvers by /8 IP Address Block"
 )
 
-
-# Example Usage - Bar Plot
 sql_query_1 = """
 SELECT owner, COUNT(*) AS count
 FROM dns_resolvers
@@ -179,7 +176,6 @@ create_plot(
     plot_type='bar'
 )
 
-# Example Usage - Pie Chart
 sql_query_2 = """
 SELECT owner, COUNT(*) AS count
 FROM dns_resolvers
@@ -192,6 +188,21 @@ create_plot(
     x_label="",  # Not used for pie charts
     y_label="",  # Not used for pie charts
     output_path="/home/ubuntu/bachelor-thesis/data/plots/dns_resolvers_by_owner.svg",
+    plot_type='pie'
+)
+
+sql_query_7 = """
+SELECT owner, COUNT(*) AS count
+FROM dns_resolvers
+WHERE owner IS NOT NULL AND owner != '' AND dnssec_support is True
+GROUP BY owner
+"""
+create_plot(
+    sql_query=sql_query_7,
+    title="Top 5 Organizations by DNSSEC Resolver Count",
+    x_label="",  # Not used for pie charts
+    y_label="",  # Not used for pie charts
+    output_path="/home/ubuntu/bachelor-thesis/data/plots/dnssec_resolvers_by_owner.svg",
     plot_type='pie'
 )
 
@@ -208,6 +219,23 @@ create_plot(
     x_label="",
     y_label="",
     output_path="/home/ubuntu/bachelor-thesis/data/plots/dns_resolvers_by_country.svg",
+    plot_type='pie'
+)
+
+sql_query_6 = """
+SELECT
+   COUNT(*) AS count,
+   geo_location AS COUNTRY
+FROM dns_resolvers
+WHERE dnssec_support is True
+GROUP BY geo_location
+"""
+create_plot(
+    sql_query=sql_query_6,
+    title="Top 5 Countires by DNSSEC Resolver Count",
+    x_label="",
+    y_label="",
+    output_path="/home/ubuntu/bachelor-thesis/data/plots/dnssec_resolvers_by_country.svg",
     plot_type='pie'
 )
 
@@ -239,7 +267,7 @@ SELECT
 FROM dns_resolvers AS d
 JOIN as_ip_ranges AS a
     ON INET_ATON(d.ip) BETWEEN INET_ATON(a.start_ip) AND INET_ATON(a.end_ip)
-WHERE d.as_name = a.as_name
+WHERE d.as_name = a.as_name AND d.dnssec_support IS True
 GROUP BY a.as_name
 ORDER BY COUNT(*) DESC
 """
@@ -248,6 +276,6 @@ create_plot(
     title="Top 5 AS by DNSSEC Server Count",
     x_label="",
     y_label="",
-    output_path="/home/ubuntu/bachelor-thesis/data/plots/dns_resolvers_by_as.svg",
+    output_path="/home/ubuntu/bachelor-thesis/data/plots/dnssec_resolvers_by_as.svg",
     plot_type='pie'
 )
